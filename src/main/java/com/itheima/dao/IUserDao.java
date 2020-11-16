@@ -3,6 +3,8 @@ package com.itheima.dao;
 import com.itheima.domain.QueryVo;
 import com.itheima.domain.User;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -57,6 +59,9 @@ public interface IUserDao {
      * @param users
      */
     int batch(List<User> users);
+
+
+    List<User> queryByIdsAndUserName(@Param("ids") List<Integer> ids,@Param("userAddress") String userAddress);
 
 
 }

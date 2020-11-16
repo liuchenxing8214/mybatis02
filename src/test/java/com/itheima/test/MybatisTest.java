@@ -3,6 +3,7 @@ package com.itheima.test;
 import com.itheima.dao.IUserDao;
 import com.itheima.domain.QueryVo;
 import com.itheima.domain.User;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -100,7 +101,7 @@ public class MybatisTest {
     public void testSave() {
         User user = new User();
         user.setUserName("modify User p222roperty111");
-        user.setUserAddress("北京市顺义区13333311");
+        user.setUserAddress("北京市顺义区");
         user.setUserSex("女");
         user.setUserBirthday(new Date());
         System.out.println("保存操作之前：" + user);
@@ -172,19 +173,31 @@ public class MybatisTest {
     }
 
     @Test
-    public void testBatch(){
+    public void testBatch() {
         List<User> list = new ArrayList<User>();
-        for(int i=31;i<=40;i++){
+        for (int i = 31; i <= 40; i++) {
             User user = new User();
-            user.setUserName("艾斯德斯11"+i);
-            user.setUserAddress("喜喜哈哈bb11====修改了"+i);
+            user.setUserName("艾斯德斯11" + i);
+            user.setUserAddress("喜喜哈哈bb11====修改了" + i);
             //user.setUserSex("女");
             user.setUserBirthday(new Date());
             user.setCode(String.valueOf(i));
             list.add(user);
         }
-       int num = userDao.batch(list);
-        System.out.println("num==="+num);
+        int num = userDao.batch(list);
+        System.out.println("num===" + num);
+    }
+
+
+    @Test
+    public void queryByIdsAndUserName() {
+        //List<User> queryByIdsAndUserName(@Param("ids") List<Integer> ids,@Param("userName") String userName);
+        List<Integer> ids = new ArrayList<Integer>();
+        ids.add(316);
+        ids.add(318);
+        String userName = "北京市顺义区";
+        List<User> result = userDao.queryByIdsAndUserName(ids, userName);
+        System.out.println("查询返回的结果为"+result);
     }
 
 }
