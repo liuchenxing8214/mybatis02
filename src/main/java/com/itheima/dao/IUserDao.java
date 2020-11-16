@@ -2,7 +2,7 @@ package com.itheima.dao;
 
 import com.itheima.domain.QueryVo;
 import com.itheima.domain.User;
-
+import com.alibaba.fastjson.JSONObject;
 import java.util.List;
 
 /**

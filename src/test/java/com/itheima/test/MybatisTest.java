@@ -99,8 +99,8 @@ public class MybatisTest {
     @Test
     public void testSave() {
         User user = new User();
-        user.setUserName("modify User property111");
-        user.setUserAddress("北京市顺义区111");
+        user.setUserName("modify User p222roperty111");
+        user.setUserAddress("北京市顺义区13333311");
         user.setUserSex("女");
         user.setUserBirthday(new Date());
         System.out.println("保存操作之前：" + user);
