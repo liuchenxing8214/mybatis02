@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class MybatisTest {
 
+
     /* */
     /**
      * 入门案例

@@ -97,10 +97,24 @@
         </where>
     </select>
 
+
+
     <!-- 抽取重复的语句代码片段 -->
     <sql id="defaultSql">
           select * from user
     </sql>
+
+
+    <select id="queryByIdsAndUserName" resultMap="userMap">
+        <include refid="defaultSql"></include>
+        where
+        id in
+        <foreach collection="ids" index="index" item="item" open="("
+                 separator="," close=")">
+            #{item}
+        </foreach>
+        and address = #{userAddress}
+    </select>
 
 
 </mapper>
